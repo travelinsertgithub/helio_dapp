@@ -68,6 +68,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "mocha": "^9.1.3"
   }
 }
