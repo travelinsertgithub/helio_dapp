@@ -170,6 +170,10 @@ export default function IndexNavbar({isadmin}) {
                     {/*  <i className="tim-icons icon-single-02" />*/}
                     {/*  View Patient*/}
                     {/*</DropdownItem>*/}
+                    <DropdownItem tag={Link} to="/remove">
+                      <i className="tim-icons icon-single-02" />
+                      Delete User
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
                 : <></>}

@@ -28,6 +28,7 @@ import DoctorInfo from "./views/examples/Doctor/DoctorInfo";
 import AddPatient from './views/examples/patient/AddPatient';
 import SearchPatient from './views/examples/patient/SearchPatient';
 import PatientInfo from './views/examples/patient/PatientInfo';
+import DeleteUser from './views/examples/DeleteUser';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -72,6 +73,10 @@ ReactDOM.render(
             <Route
                 path="/patient"
                 render={(props) => <PatientInfo {...props} />}
+            />
+            <Route
+                path="/remove"
+                render={(props) => <DeleteUser {...props} />}
             />
             <Redirect from="/" to="/index" />
         </Switch>

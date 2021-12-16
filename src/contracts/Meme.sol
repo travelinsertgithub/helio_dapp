@@ -38,21 +38,14 @@ contract Meme {
         admin.add(admin_id);
     }
 
-    //get Admin
 
     function getAdmin() public view returns(address){
         return admin_id;
     }
 
-    /*
 
-        Doctor
-
-    */
-    //Add Doctor
 
     function addDrInfo(address dr_id, string memory _drInfo_hash) public{
-//        require(admin.has(msg.sender), 'Only For Doctor');
 
         Doctor storage drInfo = Doctors[dr_id];
         drInfo.drHash = _drInfo_hash;
@@ -97,7 +90,7 @@ contract Meme {
     }
 
     function addPatInfo(address pat_id, string memory _patInfoHash) public{
-//        require(admin.has(msg.sender), 'Only you Can Add your info');
+        require(admin.has(msg.sender), 'Only you Can Add your info');
 
         Patient storage patInfo = Patients[msg.sender];
         patInfo.patHash = _patInfoHash;
@@ -145,7 +138,6 @@ contract Meme {
         return msg.sender;
     }
 
-//    Rolesbased
     modifier onlyAdmin(){
         require(admin.has(msg.sender) == true, 'Only Admin Can Do That');
         _;
@@ -158,7 +150,6 @@ contract Meme {
         require(patient.has(msg.sender) == true, 'Only Admin Can Do That');
         _;
     }
-//    endrolebased
 }
 
 //    function set(string memory _memeHash) public{

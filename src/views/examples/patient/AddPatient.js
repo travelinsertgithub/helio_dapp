@@ -168,7 +168,7 @@ export default function AddPatient() {
                                 title: 'Error',
                                 text: '1.Only Admin can Add Users\n2.This id Already have a role',
                             })
-                            window.location.reload();
+                            // window.location.reload();
                         });
                     });
             },
