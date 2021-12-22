@@ -173,7 +173,7 @@ export default function SearchDoctor() {
     }
     return (
         <>
-            <IndexNavbar  isadmin={"true"}/>
+            <IndexNavbar  isadmin={"true"} isdoctor={"false"} ishome={"false"}/>
             <div className="wrapper">
 
                 <section className="section">

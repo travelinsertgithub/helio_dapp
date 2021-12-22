@@ -29,6 +29,12 @@ import AddPatient from './views/examples/patient/AddPatient';
 import SearchPatient from './views/examples/patient/SearchPatient';
 import PatientInfo from './views/examples/patient/PatientInfo';
 import DeleteUser from './views/examples/DeleteUser';
+import DoctorProfile from "./views/examples/Doctor/DoctorProfile";
+import DoctorEdit from "./views/examples/Doctor/DoctorEdit"
+import AddPatientrecord from "./views/examples/Doctor/AddPatientrecords";
+import ViewRecords from "./views/examples/Doctor/ViewRecords";
+import Details from "./views/examples/Doctor/Details";
+import PatientProfile from "./views/examples/patient/PatientProfile";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -77,6 +83,31 @@ ReactDOM.render(
             <Route
                 path="/remove"
                 render={(props) => <DeleteUser {...props} />}
+            />
+            <Route
+                path="/Doctor_Profile"
+                render={(props) => <DoctorProfile {...props} />}
+            />
+            <Route
+                path="/patient_profile"
+                render={(props) => <PatientProfile {...props} />}
+            />
+            <Route
+                path="/Doctor_edit"
+                render={(props) => <DoctorEdit {...props} />}
+            />
+            <Route
+                path="/add_record"
+                render={(props) => <AddPatientrecord {...props} />}
+            />
+            <Route
+                path="/view_record"
+                render={(props) => <ViewRecords {...props} />}
+            />
+            <Route
+                exact
+                path="/details/:hash"
+                render={(props) => <Details {...props} />}
             />
             <Redirect from="/" to="/index" />
         </Switch>

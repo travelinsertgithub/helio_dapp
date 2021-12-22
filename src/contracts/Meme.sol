@@ -89,15 +89,7 @@ contract Meme {
         return "1";
     }
 
-    function addPatInfo(address pat_id, string memory _patInfoHash) public{
-        require(admin.has(msg.sender), 'Only you Can Add your info');
 
-        Patient storage patInfo = Patients[msg.sender];
-        patInfo.patHash = _patInfoHash;
-        Patient_ids.push(msg.sender) - 1;
-
-        patient.add(pat_id);
-    }
 
     function isPat(address id) public view returns(string memory){
         require(patient.has(id), "Only for Doctors");
@@ -105,6 +97,22 @@ contract Meme {
     }
     function addPatient(address _newpatient) external onlyAdmin() {
         patient.add(_newpatient);
+    }
+
+
+    function getPatInfo(address iD)public view returns(string memory){
+        return (Patients[iD].patHash);
+    }
+
+
+    function addPatInfo(address pat_id, string memory _patInfoHash) public{
+        require(admin.has(msg.sender), 'Only you Can Add your info');
+
+        Patient storage patInfo = Patients[pat_id];
+        patInfo.patHash = _patInfoHash;
+        Patient_ids.push(msg.sender) - 1;
+
+        patient.add(pat_id);
     }
 
     function addRec(address _patid) external onlyDoctor() {
@@ -122,12 +130,7 @@ contract Meme {
     function get_patid() public view returns(address){
         return get_patient_id;
     }
-    function getPatInfo() public view returns(string memory){
-        return (Patients[get_patient_id].patHash);
-    }
-    function getPat(address iD) public view returns(string memory){
-        return (Patients[iD].patHash);
-    }
+
 
     function searchPat(address iD)public{
         get_patient_id = iD;
@@ -136,6 +139,19 @@ contract Meme {
 
     function get() public view  returns(address){
         return msg.sender;
+    }
+
+    function addMedRecord(string memory _recHash, address _pat_id) public{
+        require(doctor.has(msg.sender) == true, 'Only Doctor Can Do That');
+
+        MedRec storage record = Records[_pat_id];
+        record.RecordHash = _recHash;
+        RecordHashes.push(_recHash) - 1;
+
+    }
+
+    function viewMedRec(address _iD)public view returns(string memory){
+        return (Records[_iD].RecordHash);
     }
 
     modifier onlyAdmin(){

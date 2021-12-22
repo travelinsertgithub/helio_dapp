@@ -5,12 +5,13 @@ import {
     Card,
     CardHeader,
     CardBody,
-   FormGroup,
+    FormGroup,
     Form,
     Input,
     Container,
     Row,
     Col,
+    Button,
 
 } from "reactstrap";
 import axios from "axios";
@@ -28,7 +29,7 @@ import ipfs from "../../../utils/ipfs";
 let ps = null;
 const baseURL = "https://ipfs.infura.io:5001/api/v0/cat?arg=";
 
-export default function DoctorInfo() {
+export default function DoctorEdit() {
     const [Drinfo, setDrinfo] = useState('');
     const [loadweb3s, setLoadweb3s] = useState('');
     const [loadBlockchainDates, setLoadBlockchainDates] = useState('');
@@ -90,11 +91,11 @@ export default function DoctorInfo() {
             // const memeHash = await contract.methods.get().call()
             // console.log("Value",memeHash)
 
-            await contract.methods.getDrInfo().call().then(value =>{
+            await contract.methods.getDr(accounts[0]).call().then(value =>{
                 console.log("Doctor info hash : ",value)
                 axios.get(baseURL+value).then((response) => {
                     setDetails(response.data);
-                    console.log(details);
+                    console.log(response.data);
                 });
 
             })
@@ -120,18 +121,6 @@ export default function DoctorInfo() {
         setLoadweb3s('true');
     };
 
-    // const getDrInfo = async () => {
-    //     console.log(account)
-    //     await contract.methods.getDrInfo().call().then(value =>{
-    //         console.log("Doctor info hash : ",value)
-    //         ipfs.cat(value).then(data =>{
-    //             console.log(data)
-    //             var val = JSON.parse(data)
-    //
-    //
-    //         })
-    //     })
-    // };
 
     const AddDoctorForm = () => {
         const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -186,23 +175,24 @@ export default function DoctorInfo() {
             }),
             onSubmit: async values => {
                 const result = JSON.stringify(values, null, 2);
+                console.log(result);
+
                 await ipfs.add(result).then(
                     hash => {
                         console.log(hash.path)
-                        contract.methods.addDrInfo(values.accid,hash.path).send({from: account})
+                        contract.methods.updateInfo(values.accid,hash.path).send({from: account})
                             .on("confirmation", (r) => {
-                                console.log("Doctor Added Successfully")
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'Success',
-                                    text: 'Doctor Registered Successfully!',
+                                    text: 'Your Info Updated Successfully!',
                                 })
                                 window.location.reload();
                             }).on("error",(er)=>{
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
-                                text: '1.Only Admin can Add Users\n2.This id Already have a role',
+                                text: 'Something Went wrong',
                             })
                             window.location.reload();
                         });
@@ -253,7 +243,7 @@ export default function DoctorInfo() {
                             <Input
                                 id="email"
                                 name="email"
-                                type="email"
+                                type="hidden"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.email}
@@ -351,11 +341,10 @@ export default function DoctorInfo() {
                 <Row>
                     <Col md="12">
                         <FormGroup>
-                            <label>Account Id</label>
                             <Input
                                 id="accid"
                                 name="accid"
-                                type="text"
+                                type="hidden"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.accid}
@@ -385,11 +374,10 @@ export default function DoctorInfo() {
                     </Col>
                     <Col md="6">
                         <FormGroup>
-                            <label>Register No</label>
                             <Input
                                 id="regno"
                                 name="regno"
-                                type="text"
+                                type="hidden"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.regno}
@@ -403,11 +391,10 @@ export default function DoctorInfo() {
                 <Row>
                     <Col md="12">
                         <FormGroup>
-                            <label>Qualification</label>
                             <Input
                                 id="qualification"
                                 name="qualification"
-                                type="text"
+                                type="hidden"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.qualification}
@@ -419,21 +406,21 @@ export default function DoctorInfo() {
                     </Col>
                 </Row>
 
-                {/*<Button*/}
-                {/*    className="btn-round float-right"*/}
-                {/*    color="primary"*/}
-                {/*    data-placement="right"*/}
-                {/*    id="tooltip341148792"*/}
-                {/*    type="submit"*/}
-                {/*>*/}
-                {/*    Add Doctor*/}
-                {/*</Button>*/}
+                <Button
+                    className="btn-round float-right"
+                    color="primary"
+                    data-placement="right"
+                    id="tooltip341148792"
+                    type="submit"
+                >
+                    Update
+                </Button>
             </Form>
         );
     }
     return (
         <>
-            <IndexNavbar  isadmin={"true"} isdoctor={"false"} ishome={"false"}/>
+            <IndexNavbar  isadmin={"false"} isdoctor={"true"} ishome={"false"}/>
             <div className="wrapper">
 
                 <section className="section">
@@ -450,25 +437,7 @@ export default function DoctorInfo() {
                                     </CardBody>
                                 </Card>
                             </Col>
-                            <Col md="6" className="align-self-center">
 
-                                    <Card className="card-coin card-plain">
-                                        <CardHeader>
-                                            <img
-                                                alt="..."
-                                                className="img-center img-fluid rounded-circle"
-                                                src={require("../../../assets/img/mike.jpg").default}
-                                            />
-                                            <h4 className="title">Dr. {details.firstName + ' ' +details.lastName + ' ' + details.qualification}</h4>
-                                        </CardHeader>
-                                        <CardBody>
-                                            {/*<h6 className="profile-title text-left"></h6>*/}
-                                            <h6>{details.Speciality}</h6>
-
-                                        </CardBody>
-                                    </Card>
-
-                            </Col>
                         </Row>
                     </Container>
                 </section>

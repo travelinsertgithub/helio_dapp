@@ -128,7 +128,7 @@ export default function AdminPage() {
                         <Row>
                             <Col lg="6" md="6">
                                 <h1 className="profile-title text-left" style={{lineBreak:"anywhere"}}>{account}</h1>
-                                <h5 className="text-on-back">Role</h5>
+                                <h5 className="text-on-back">Admin</h5>
 
                             </Col>
                             <Col className="ml-auto mr-auto" lg="4" md="6">
@@ -137,7 +137,7 @@ export default function AdminPage() {
                                         <img
                                             alt="..."
                                             className="img-center img-fluid rounded-circle"
-                                            src={require("../../assets/img/path4.png").default}
+                                            src={require("../../assets/img/profile.png").default}
                                         />
                                         <h4 className="title">Profile</h4>
                                     </CardHeader>
@@ -149,92 +149,7 @@ export default function AdminPage() {
                         </Row>
                     </Container>
                 </div>
-                <section className="section section-lg">
-                    <section className="section">
-                        <img
-                            alt="..."
-                            className="path"
-                            src={require("../../assets/img/path4.png").default}
-                        />
-                        <Container>
-                            <Row className="row-grid justify-content-between">
-                                <Col className="mt-lg-5" md="5">
-                                    <Row>
-                                        <Col className="px-2 py-2" lg="6" sm="12">
-                                            <Card className="card-stats">
-                                                <CardBody>
-                                                    <Row>
-                                                        <Col md="4" xs="5">
-                                                            <div className="icon-big text-center icon-warning">
-                                                                <i className="tim-icons icon-single-02 text-warning" />
-                                                            </div>
-                                                        </Col>
-                                                        <Col md="8" xs="7">
-                                                            <div className="numbers">
-                                                                <CardTitle tag="p">3,237</CardTitle>
-                                                                <p />
-                                                                <p className="card-category">Doctors</p>
-                                                            </div>
-                                                        </Col>
-                                                    </Row>
-                                                </CardBody>
-                                            </Card>
-                                        </Col>
-                                        <Col className="px-2 py-2" lg="6" sm="12">
-                                            <Card className="card-stats upper bg-default">
-                                                <CardBody>
-                                                    <Row>
-                                                        <Col md="4" xs="5">
-                                                            <div className="icon-big text-center icon-warning">
-                                                                <i className="tim-icons icon-single-02 text-white" />
-                                                            </div>
-                                                        </Col>
-                                                        <Col md="8" xs="7">
-                                                            <div className="numbers">
-                                                                <CardTitle tag="p">3,653</CardTitle>
-                                                                <p />
-                                                                <p className="card-category">patient</p>
-                                                            </div>
-                                                        </Col>
-                                                    </Row>
-                                                </CardBody>
-                                            </Card>
-                                        </Col>
-                                    </Row>
 
-                                </Col>
-                                <Col md="6">
-                                    <div className="pl-md-5">
-                                        <h1>
-                                            Large <br />
-                                            Achivements
-                                        </h1>
-                                        <p>
-                                            I should be capable of drawing a single stroke at the
-                                            present moment; and yet I feel that I never was a greater
-                                            artist than now.
-                                        </p>
-                                        <br />
-                                        <p>
-                                            When, while the lovely valley teems with vapour around me,
-                                            and the meridian sun strikes the upper surface of the
-                                            impenetrable foliage of my trees, and but a few stray.
-                                        </p>
-                                        <br />
-                                        <a
-                                            className="font-weight-bold text-info mt-5"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
-                                        >
-                                            Show all{" "}
-                                            <i className="tim-icons icon-minimal-right text-info" />
-                                        </a>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section>
-                </section>
                 <Footer />
             </div>
         </>

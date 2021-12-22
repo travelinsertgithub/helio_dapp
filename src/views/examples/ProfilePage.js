@@ -147,7 +147,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      <IndexNavbar />
+      <IndexNavbar isadmin={"false"} isdoctor={"false"} ishome={"true"}/>
       <div className="wrapper">
         <div className="page-header">
           <img

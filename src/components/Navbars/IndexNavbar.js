@@ -20,9 +20,11 @@ import {
 
 } from "reactstrap";
 
-export default function IndexNavbar({isadmin}) {
+export default function IndexNavbar({isadmin,isdoctor,ishome}) {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [isAdmin, setIsAdmin] = React.useState(false);
+  const [isDoctor, setIsDoctor] = React.useState(false);
+  const [isHome, setIsHome] = React.useState(false);
   const [collapseOut, setCollapseOut] = React.useState("");
   const [color, setColor] = React.useState("navbar-transparent");
   React.useEffect(() => {
@@ -30,6 +32,12 @@ export default function IndexNavbar({isadmin}) {
     if(!isAdmin){
       if(isadmin == "true"){
         setIsAdmin(true);
+      }
+      if(isdoctor == "true"){
+        setIsDoctor(true);
+      }
+      if(ishome == "true"){
+        setIsHome(true);
       }
     }
     return function cleanup() {
@@ -176,7 +184,75 @@ export default function IndexNavbar({isadmin}) {
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
-                : <></>}
+                : <>
+
+                </>}
+            {isDoctor ?
+                <>
+                  <UncontrolledDropdown nav>
+                    <DropdownToggle
+                        caret
+                        color="default"
+                        data-toggle="dropdown"
+                        href="#pablo"
+                        nav
+                        onClick={(e) => e.preventDefault()}
+                    >
+                      <i className="fa fa-cogs d-lg-none d-xl-none" />
+                      Doctor
+                    </DropdownToggle>
+                    <DropdownMenu className="dropdown-with-icons">
+
+                      <DropdownItem tag={Link} to="/add_record">
+                        <i className="tim-icons icon-bullet-list-67" />
+                        Add Record
+                      </DropdownItem>
+
+                      <DropdownItem tag={Link} to="/view_record">
+                        <i className="tim-icons icon-single-02" />
+                        View record
+                      </DropdownItem>
+                      {/*<DropdownItem tag={Link} to="/search_patient">*/}
+                      {/*  <i className="tim-icons icon-single-02" />*/}
+                      {/*  View Patient*/}
+                      {/*</DropdownItem>*/}
+
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </>
+                :
+                <></>
+            }
+            {isHome ?
+                <>
+                  <NavItem className="p-0">
+                    <NavLink
+                        data-placement="bottom"
+                        tag={Link}
+                        rel="noopener noreferrer"
+                        to="/Doctor_Profile"
+                        title="Profile"
+                    >
+                      I am Doctor
+                      <p className="d-lg-none d-xl-none">Profile</p>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem className="p-0">
+                    <NavLink
+                        data-placement="bottom"
+                        tag={Link}
+                        rel="noopener noreferrer"
+                        to="/patient_profile"
+                        title="Profile"
+                    >
+                      I am Patient
+                      <p className="d-lg-none d-xl-none">Profile</p>
+                    </NavLink>
+                  </NavItem>
+                </>
+                :
+                <></>
+            }
             <NavItem className="p-0">
               <NavLink
                   data-placement="bottom"

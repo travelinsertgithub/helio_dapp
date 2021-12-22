@@ -166,7 +166,7 @@ export default function AddPatient() {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
-                                text: '1.Only Admin can Add Users\n2.This id Already have a role',
+                                text: 'This id Already have a role',
                             })
                             // window.location.reload();
                         });
@@ -345,7 +345,7 @@ export default function AddPatient() {
     }
     return (
         <>
-            <IndexNavbar  isadmin={"true"}/>
+            <IndexNavbar  isadmin={"true"} isdoctor={"false"} ishome={"false"}/>
             <div className="wrapper">
 
                 <section className="section">
