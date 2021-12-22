@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/helio_dapp/static/css/main.e4ee5367.chunk.css",
+    "main.js": "/helio_dapp/static/js/main.a4bf7e0c.chunk.js",
+    "main.js.map": "/helio_dapp/static/js/main.a4bf7e0c.chunk.js.map",
+    "runtime-main.js": "/helio_dapp/static/js/runtime-main.c610afa5.js",
+    "runtime-main.js.map": "/helio_dapp/static/js/runtime-main.c610afa5.js.map",
+    "static/js/2.9a5300ec.chunk.js": "/helio_dapp/static/js/2.9a5300ec.chunk.js",
+    "static/js/2.9a5300ec.chunk.js.map": "/helio_dapp/static/js/2.9a5300ec.chunk.js.map",
+    "index.html": "/helio_dapp/index.html",
+    "static/css/main.e4ee5367.chunk.css.map": "/helio_dapp/static/css/main.e4ee5367.chunk.css.map",
+    "static/js/2.9a5300ec.chunk.js.LICENSE.txt": "/helio_dapp/static/js/2.9a5300ec.chunk.js.LICENSE.txt",
+    "static/media/blob.png": "/helio_dapp/static/media/blob.e3950678.png",
+    "static/media/cercuri.png": "/helio_dapp/static/media/cercuri.05cc0d04.png",
+    "static/media/blk-design-system-react.scss?v=1.2.0": "/helio_dapp/static/media/square5.16283001.png",
+    "static/media/denys.jpg": "/helio_dapp/static/media/denys.1b33975a.jpg",
+    "static/media/etherum.png": "/helio_dapp/static/media/etherum.628f765f.png",
+    "static/media/fabien-bazanegue.jpg": "/helio_dapp/static/media/fabien-bazanegue.3c5ff5a0.jpg",
+    "static/media/mark-finn.jpg": "/helio_dapp/static/media/mark-finn.40b78857.jpg",
+    "static/media/mike.jpg": "/helio_dapp/static/media/mike.fe979cd1.jpg",
+    "static/media/nucleo-icons.css": "/helio_dapp/static/media/nucleo.bd5cce8b.eot",
+    "static/media/path2.png": "/helio_dapp/static/media/path2.35e76a63.png",
+    "static/media/path4.png": "/helio_dapp/static/media/path4.cb1d9fab.png",
+    "static/media/patrat.png": "/helio_dapp/static/media/patrat.aeec33e4.png",
+    "static/media/profile.png": "/helio_dapp/static/media/profile.4b4a77b9.png",
+    "static/media/square-purple-1.png": "/helio_dapp/static/media/square-purple-1.ed3a5e38.png",
+    "static/media/waves.png": "/helio_dapp/static/media/waves.ac46eaef.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c610afa5.js",
+    "static/js/2.9a5300ec.chunk.js",
+    "static/css/main.e4ee5367.chunk.css",
+    "static/js/main.a4bf7e0c.chunk.js"
+  ]
+}
